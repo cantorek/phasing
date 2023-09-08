@@ -3,12 +3,14 @@ module phasing
 go 1.21
 
 require (
+	github.com/manifoldco/promptui v0.9.0
 	golang.org/x/crypto v0.13.0
 	k8s.io/apimachinery v0.28.1
 	k8s.io/client-go v0.28.1
 )
 
 require (
+	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/emicklei/go-restful/v3 v3.9.0 // indirect
 	github.com/go-logr/logr v1.2.4 // indirect

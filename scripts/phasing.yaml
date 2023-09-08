@@ -8,12 +8,7 @@ metadata:
 spec:
   containers:
   - name: phasing-container
-    image: public.ecr.aws/panubo/sshd
-    env:
-    - name: GATEWAY_PORTS
-      value: "true"
-    - name: TCP_FORWARDING
-      value: "true"
+    image: cantorek/phasing:v0.0
     volumeMounts:
     - name: authorized-keys-volume
       mountPath: /root/.ssh/authorized_keys
