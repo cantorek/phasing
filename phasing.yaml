@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: phasing
+  labels:
+    app: phasing
+spec:
+  containers:
+  - name: phasing-container
+    image: public.ecr.aws/panubo/sshd
+    env:
+    - name: GATEWAY_PORTS
+      value: "true"
+    - name: TCP_FORWARDING
+      value: "true"
+    volumeMounts:
+    - name: authorized-keys-volume
+      mountPath: /root/.ssh/authorized_keys
+      subPath: authorized_keys
+  volumes:
+  - name: authorized-keys-volume
+    configMap:
+      name: phasing-config
+      items:
+      - key: authorized_keys
+        path: authorized_keys
