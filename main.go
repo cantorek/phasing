@@ -214,6 +214,7 @@ func sshKeyFile(file string) ssh.AuthMethod {
 // use kubectl to do port forwarding to remote phasing agent
 // local port is selected by os (0)
 // we need to use pipe for stdout parsing, because it's a long running - blocking - command
+// TODO: rewrite this to use k8s API instead of kubectl binary
 func PortForward() (err error) {
 	cmd := exec.Command("kubectl", "port-forward", "--address=0.0.0.0", "pod/phasing", strconv.Itoa(phasing.AgentLocalPort)+":22")
 
@@ -251,6 +252,7 @@ func PortForward() (err error) {
 	return nil
 }
 
+// TODO: rewrite this to use k8s API instead of kubectl binary
 func Init() (err error) {
 	f, err := os.CreateTemp("", "phasing")
 	if err != nil {
